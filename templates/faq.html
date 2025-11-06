@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}FAQ - VidFlow{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 max-w-4xl">
+    <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent">
+            Frequently Asked Questions
+        </h1>
+    </div>
+    
+    <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+            <button class="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none faq-button">
+                <span class="text-xl font-semibold text-white">How do I convert a YouTube video?</span>
+                <svg class="w-6 h-6 text-neon-blue transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-4">
+                <p class="text-white/70">Simply paste the YouTube URL into the input box on the homepage, select your preferred format (MP4 or MP3), choose the quality, and click Convert. The video will be processed and ready for download.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+            <button class="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none faq-button">
+                <span class="text-xl font-semibold text-white">What video qualities are available?</span>
+                <svg class="w-6 h-6 text-neon-blue transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-4">
+                <p class="text-white/70">VidFlow supports multiple quality options including 1080p, 720p, 480p, 360p, and the best available quality. The available options depend on the source video's quality.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+            <button class="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none faq-button">
+                <span class="text-xl font-semibold text-white">Is VidFlow free to use?</span>
+                <svg class="w-6 h-6 text-neon-blue transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-4">
+                <p class="text-white/70">Yes, VidFlow is completely free to use. There are no hidden fees, subscriptions, or premium tiers. Enjoy unlimited conversions!</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+            <button class="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none faq-button">
+                <span class="text-xl font-semibold text-white">Can I convert playlists?</span>
+                <svg class="w-6 h-6 text-neon-blue transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-4">
+                <p class="text-white/70">Currently, VidFlow supports single video conversions. Playlist support may be added in future updates.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+            <button class="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none faq-button">
+                <span class="text-xl font-semibold text-white">How long does conversion take?</span>
+                <svg class="w-6 h-6 text-neon-blue transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-4">
+                <p class="text-white/70">Conversion time depends on video length and quality. Typically, a 5-minute video takes 10-30 seconds to process. Longer videos may take more time.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 6 -->
+        <div class="glass-card rounded-xl overflow-hidden faq-item">
+            <button class="w-full px-6 py-4 text-left flex items-center justify-between focus:outline-none faq-button">
+                <span class="text-xl font-semibold text-white">Is my data secure?</span>
+                <svg class="w-6 h-6 text-neon-blue transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+            </button>
+            <div class="faq-content hidden px-6 pb-4">
+                <p class="text-white/70">Yes, VidFlow processes videos securely. We don't store your personal information, and converted files are automatically cleaned up after a period of time.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/faq.js') }}"></script>
+{% endblock %}
+

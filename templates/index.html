@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}VidFlow - YouTube to MP4 Converter{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <!-- Hero Section -->
+    <div class="text-center mb-16">
+        <h1 class="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink bg-clip-text text-transparent animate-pulse">
+            VidFlow
+        </h1>
+        <p class="text-xl md:text-2xl text-white/80 mb-12">
+            Transform YouTube videos into MP4 & MP3 with stunning 3D visuals
+        </p>
+    </div>
+    
+    <!-- 3D Floating Input Box -->
+    <div class="max-w-4xl mx-auto mb-12">
+        <div class="glass-card p-8 rounded-3xl transform-gpu" id="input-container">
+            <div class="relative">
+                <label class="block text-white/90 text-sm font-medium mb-4">
+                    Paste YouTube URL
+                </label>
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="youtube-url" 
+                        placeholder="https://www.youtube.com/watch?v=..." 
+                        class="w-full px-6 py-4 bg-white/10 dark:bg-gray-800/30 backdrop-blur-xl border-2 border-neon-blue/50 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-neon-purple focus:ring-4 focus:ring-neon-purple/20 transition-all duration-300 neon-glow"
+                    />
+                    <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-neon-blue/20 via-neon-purple/20 to-neon-pink/20 opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                </div>
+                
+                <!-- Format Selection -->
+                <div class="flex items-center space-x-4 mt-6">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="format" value="mp4" checked class="w-5 h-5 text-neon-purple focus:ring-neon-purple focus:ring-2">
+                        <span class="text-white/90">MP4 Video</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="format" value="mp3" class="w-5 h-5 text-neon-purple focus:ring-neon-purple focus:ring-2">
+                        <span class="text-white/90">MP3 Audio</span>
+                    </label>
+                </div>
+                
+                <!-- Quality Selection (for MP4) -->
+                <div id="quality-selector" class="mt-6">
+                    <label class="block text-white/90 text-sm font-medium mb-2">Quality</label>
+                    <select id="quality" class="w-full px-4 py-2 bg-white/10 dark:bg-gray-800/30 backdrop-blur-xl border border-neon-blue/50 rounded-lg text-white focus:outline-none focus:border-neon-purple">
+                        <option value="best">Best Available</option>
+                        <option value="1080">1080p</option>
+                        <option value="720">720p</option>
+                        <option value="480">480p</option>
+                        <option value="360">360p</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Convert Button -->
+    <div class="text-center mb-12">
+        <button 
+            id="convert-btn" 
+            class="px-12 py-4 bg-gradient-to-r from-neon-blue via-neon-purple to-neon-pink text-white font-bold text-xl rounded-xl transform transition-all duration-300 hover:scale-110 hover:shadow-2xl hover:shadow-neon-purple/50 neon-button-glow"
+        >
+            <span class="flex items-center justify-center space-x-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span>Convert</span>
+            </span>
+        </button>
+    </div>
+    
+    <!-- Video Info Display -->
+    <div id="video-info" class="max-w-4xl mx-auto hidden">
+        <div class="glass-card p-6 rounded-2xl mb-6">
+            <div class="flex items-start space-x-6">
+                <img id="video-thumbnail" src="" alt="Video thumbnail" class="w-48 h-32 object-cover rounded-lg shadow-lg">
+                <div class="flex-1">
+                    <h3 id="video-title" class="text-2xl font-bold text-white mb-2"></h3>
+                    <p id="video-meta" class="text-white/70"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Progress Loader -->
+    <div id="progress-container" class="max-w-4xl mx-auto hidden">
+        <div class="glass-card p-8 rounded-2xl text-center">
+            <div class="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-neon-purple mb-4"></div>
+            <p class="text-white/90 text-lg" id="progress-text">Processing your video...</p>
+            <div class="mt-4 w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-neon-blue to-neon-purple transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/converter.js') }}"></script>
+{% endblock %}
+

@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: vidflow
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT --workers 2 --threads 2 --timeout 300
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        fromService:
+          type: web
+          name: vidflow
+          property: port
+      - key: SECRET_KEY
+        generateValue: true
+
